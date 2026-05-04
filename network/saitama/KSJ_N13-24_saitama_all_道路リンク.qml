@@ -1,6 +1,6 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
 <qgis version="3.34.0" styleCategories="Symbology">
-  <renderer-v2 type="categorizedSymbol" attr="N13_003" forceraster="0" symbollevels="0" usingSymbolLevels="0" enableorderby="0">
+  <renderer-v2 type="categorizedSymbol" attr="N13_003" forceraster="0" symbollevels="1" usingSymbolLevels="1" enableorderby="0">
     <categories>
       <category symbol="0" value="4" label="高速自動車国道等" render="true"/>
       <category symbol="1" value="1" label="国道" render="true"/>
@@ -12,7 +12,7 @@
     <symbols>
       <symbol name="0" type="line" alpha="1" clip_to_extent="1" is_animated="0" frame_rate="10">
         <data_defined_properties><Option type="Map"><Option name="name" type="QString" value=""/><Option name="properties"/><Option name="type" type="QString" value="collection"/></Option></data_defined_properties>
-        <layer class="SimpleLine" enabled="1" pass="0" locked="0">
+        <layer class="SimpleLine" enabled="1" pass="3" locked="0">
           <Option type="Map">
             <Option name="line_color" type="QString" value="0,48,135,255"/>
             <Option name="line_style"  type="QString" value="solid"/>
@@ -23,7 +23,7 @@
       </symbol>
       <symbol name="1" type="line" alpha="1" clip_to_extent="1" is_animated="0" frame_rate="10">
         <data_defined_properties><Option type="Map"><Option name="name" type="QString" value=""/><Option name="properties"/><Option name="type" type="QString" value="collection"/></Option></data_defined_properties>
-        <layer class="SimpleLine" enabled="1" pass="0" locked="0">
+        <layer class="SimpleLine" enabled="1" pass="2" locked="0">
           <Option type="Map">
             <Option name="line_color" type="QString" value="230,0,38,255"/>
             <Option name="line_style"  type="QString" value="solid"/>
@@ -34,7 +34,7 @@
       </symbol>
       <symbol name="2" type="line" alpha="1" clip_to_extent="1" is_animated="0" frame_rate="10">
         <data_defined_properties><Option type="Map"><Option name="name" type="QString" value=""/><Option name="properties"/><Option name="type" type="QString" value="collection"/></Option></data_defined_properties>
-        <layer class="SimpleLine" enabled="1" pass="0" locked="0">
+        <layer class="SimpleLine" enabled="1" pass="1" locked="0">
           <Option type="Map">
             <Option name="line_color" type="QString" value="26,115,232,255"/>
             <Option name="line_style"  type="QString" value="solid"/>
@@ -49,7 +49,7 @@
           <Option type="Map">
             <Option name="line_color" type="QString" value="40,167,69,255"/>
             <Option name="line_style"  type="QString" value="solid"/>
-            <Option name="line_width"  type="QString" value="0.3"/>
+            <Option name="line_width"  type="QString" value="0.1"/>
             <Option name="line_width_unit" type="QString" value="MM"/>
           </Option>
         </layer>
@@ -60,7 +60,7 @@
           <Option type="Map">
             <Option name="line_color" type="QString" value="136,136,136,255"/>
             <Option name="line_style"  type="QString" value="solid"/>
-            <Option name="line_width"  type="QString" value="0.3"/>
+            <Option name="line_width"  type="QString" value="0.1"/>
             <Option name="line_width_unit" type="QString" value="MM"/>
           </Option>
         </layer>
@@ -71,7 +71,7 @@
           <Option type="Map">
             <Option name="line_color" type="QString" value="170,170,170,255"/>
             <Option name="line_style"  type="QString" value="solid"/>
-            <Option name="line_width"  type="QString" value="0.3"/>
+            <Option name="line_width"  type="QString" value="0.1"/>
             <Option name="line_width_unit" type="QString" value="MM"/>
           </Option>
         </layer>
