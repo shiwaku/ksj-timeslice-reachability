@@ -1,10 +1,12 @@
 # 国土数値情報 元データ（大容量・各自ダウンロード）
 input/*/
 
-# 生成したネットワークデータ（大容量・再生成可能）。saitama はサンプルとして同梱
+# 生成したネットワークデータ（大容量・再生成可能）。saitama・saitama_pref はサンプルとして同梱
 network/*/
 !network/saitama/
 !network/saitama/**
+!network/saitama_pref/
+!network/saitama_pref/**
 
 # 分析出力（ユーザーが生成）
 output/

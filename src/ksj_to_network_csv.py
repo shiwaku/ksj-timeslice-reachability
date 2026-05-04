@@ -214,35 +214,37 @@ def write_road_links_qml(qml_path):
            '<Option name="properties"/>'
            '<Option name="type" type="QString" value="collection"/>'
            '</Option></data_defined_properties>')
+    # (value, label, color, line_width, pass)
+    # pass: 描画順制御（数値が大きいほど前面）高速=3, 国道=2, 都道府県道=1, それ以下=0
     categories = [
-        ('4', '高速自動車国道等', '0,48,135,255'),    # #003087
-        ('1', '国道',           '230,0,38,255'),      # #e60026
-        ('2', '都道府県道',      '26,115,232,255'),    # #1a73e8
-        ('3', '市区町村道等',    '40,167,69,255'),     # #28a745
-        ('5', 'その他',          '136,136,136,255'),   # #888888
-        ('6', '不明',            '170,170,170,255'),   # #aaaaaa
+        ('4', '高速自動車国道等', '0,48,135,255',  '0.7', '3'),
+        ('1', '国道',           '230,0,38,255',   '0.5', '2'),
+        ('2', '都道府県道',      '26,115,232,255', '0.3', '1'),
+        ('3', '市区町村道等',    '40,167,69,255',  '0.1', '0'),
+        ('5', 'その他',          '136,136,136,255','0.1', '0'),
+        ('6', '不明',            '170,170,170,255','0.1', '0'),
     ]
     cats_xml  = '\n'.join(
         f'      <category symbol="{i}" value="{v}" label="{lbl}" render="true"/>'
-        for i, (v, lbl, _) in enumerate(categories)
+        for i, (v, lbl, _, _, _) in enumerate(categories)
     )
     syms_xml  = '\n'.join(
         f'      <symbol name="{i}" type="line" alpha="1" clip_to_extent="1" is_animated="0" frame_rate="10">\n'
         f'        {_DP}\n'
-        f'        <layer class="SimpleLine" enabled="1" pass="0" locked="0">\n'
+        f'        <layer class="SimpleLine" enabled="1" pass="{pas}" locked="0">\n'
         f'          <Option type="Map">\n'
         f'            <Option name="line_color" type="QString" value="{col}"/>\n'
         f'            <Option name="line_style"  type="QString" value="solid"/>\n'
-        f'            <Option name="line_width"  type="QString" value="0.3"/>\n'
+        f'            <Option name="line_width"  type="QString" value="{wid}"/>\n'
         f'            <Option name="line_width_unit" type="QString" value="MM"/>\n'
         f'          </Option>\n'
         f'        </layer>\n'
         f'      </symbol>'
-        for i, (_, _, col) in enumerate(categories)
+        for i, (_, _, col, wid, pas) in enumerate(categories)
     )
     qml = f"""<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
 <qgis version="3.34.0" styleCategories="Symbology">
-  <renderer-v2 type="categorizedSymbol" attr="N13_003" forceraster="0" symbollevels="0" usingSymbolLevels="0" enableorderby="0">
+  <renderer-v2 type="categorizedSymbol" attr="N13_003" forceraster="0" symbollevels="1" usingSymbolLevels="1" enableorderby="0">
     <categories>
 {cats_xml}
     </categories>
