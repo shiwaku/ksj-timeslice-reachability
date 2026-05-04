@@ -81,28 +81,13 @@ pip install geopandas pyarrow scipy
 
 出典: 国土数値情報 道路データ（N13-24）/ 国土交通省
 
-### サンプル実行（埼玉県庁 → 東松山市役所・T_max=60分）
+### サンプル実行（埼玉県庁 → 東松山市役所・T_max=60,65,70分）
 
 ```bash
 python3 src/timeslice_search.py \
-  --orig-lat 35.8578 --orig-lon 139.6490 --orig-name 埼玉県庁 \
-  --dest-lat 36.0420 --dest-lon 139.4006 --dest-name 東松山市役所 \
-  --tmax 60
-```
-
-`--links`・`--nodes`・`--access` を省略すると `network/saitama/` のサンプルデータを使用する。
-
-### T_max を変更・複数指定
-
-```bash
-# T_max を 65 分に変更
-python3 src/timeslice_search.py \
-  --orig-lat 35.8578 --orig-lon 139.6490 --orig-name 埼玉県庁 \
-  --dest-lat 36.0420 --dest-lon 139.4006 --dest-name 東松山市役所 \
-  --tmax 65
-
-# 複数 T_max を一括出力（Dijkstra は1回のみ実行）
-python3 src/timeslice_search.py \
+  --links network/saitama_pref/KSJ_N13-24_saitama_pref_道路リンク.parquet \
+  --nodes network/saitama_pref/KSJ_N13-24_saitama_pref_道路ノード.parquet \
+  --access network/saitama_pref/KSJ_N13-24_saitama_pref_アクセスリンク_L6.parquet \
   --orig-lat 35.8578 --orig-lon 139.6490 --orig-name 埼玉県庁 \
   --dest-lat 36.0420 --dest-lon 139.4006 --dest-name 東松山市役所 \
   --tmax 60,65,70
