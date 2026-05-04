@@ -483,12 +483,35 @@ def main():
     # ── [1/4] 道路ノードCSV 読み込み ────────────────────────
     print('[1/4] 道路ノードCSV読み込み中 ...')
     print(f'      {IN_NODES_CSV}')
+
+    # 高速専用ノードを特定して除外する（IC等で一般道にも接続するノードは残す）
+    # ノードCSVと同じディレクトリを優先して探索し、なければ OUT_DIR も確認
+    _links_name = f'KSJ_N13-24_{CASE_NAME}_道路リンク.parquet'
+    links_parquet = IN_NODES_CSV.parent / _links_name
+    if not links_parquet.exists():
+        links_parquet = OUT_DIR / _links_name
+    expressway_only_nodes: set = set()
+    if links_parquet.exists():
+        import pandas as _pd
+        ldf = _pd.read_parquet(links_parquet, columns=['node1', 'node2', 'N13_003'])
+        ldf['N13_003'] = ldf['N13_003'].astype(str)
+        exp = ldf[ldf['N13_003'] == '4']
+        exp_nodes = set(exp['node1']) | set(exp['node2'])
+        non_exp_nodes = set(ldf[ldf['N13_003'] != '4']['node1']) | \
+                        set(ldf[ldf['N13_003'] != '4']['node2'])
+        expressway_only_nodes = exp_nodes - non_exp_nodes
+        print(f'      高速専用ノード除外: {len(expressway_only_nodes):,}件')
+    else:
+        print(f'      道路リンクparquetが見つからないため高速専用ノード除外をスキップ: {links_parquet}')
+
     node_ids = []
     lons = []
     lats = []
     with IN_NODES_CSV.open(encoding='utf-8-sig') as f:
         reader = csv.DictReader(f)
         for row in reader:
+            if row['node_id'] in expressway_only_nodes:
+                continue
             node_ids.append(row['node_id'])
             lons.append(float(row['lon']))
             lats.append(float(row['lat']))
