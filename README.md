@@ -105,7 +105,7 @@ python3 src/timeslice_search.py \
 python3 src/timeslice_search.py \
   --orig-lat 35.8578 --orig-lon 139.6490 --orig-name 埼玉県庁 \
   --dest-lat 36.0420 --dest-lon 139.4006 --dest-name 東松山市役所 \
-  --tmax 60,65,70,80
+  --tmax 60,65,70
 ```
 
 緯度・経度は Google マップで地点を右クリックするとコピーできる。
