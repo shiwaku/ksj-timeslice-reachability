@@ -43,14 +43,16 @@ slack[m] <  0  → 通過不可
 │   ├── ksj_to_network_csv.py     # 国土数値情報 → 道路リンク・ノード parquet
 │   └── make_access_links.py      # L6 アクセスリンク生成
 ├── data/
-│   ├── saitama/                  # サンプルデータ（埼玉県・同梱済み）
-│   │   ├── KSJ_N13-24_saitama_all_道路リンク.parquet
-│   │   ├── KSJ_N13-24_saitama_all_道路ノード.parquet
-│   │   └── KSJ_N13-24_saitama_all_アクセスリンク_L6.parquet
 │   ├── prefecture.parquet        # 都道府県境界ポリゴン（--pref クリップ用）
 │   └── city.parquet              # 市区町村境界ポリゴン（--city クリップ用）
 ├── input/                        # 国土数値情報 GeoJSON 配置場所（gitignored・各自用意）
-├── network/                      # 生成したネットワークデータ（gitignored・再生成可能）
+├── network/                      # ネットワークデータ
+│   ├── saitama/                  # サンプルデータ（埼玉県・同梱済み）
+│   │   ├── KSJ_N13-24_saitama_all_道路リンク.parquet
+│   │   ├── KSJ_N13-24_saitama_all_道路リンク.qml
+│   │   ├── KSJ_N13-24_saitama_all_道路ノード.parquet
+│   │   └── KSJ_N13-24_saitama_all_アクセスリンク_L6.parquet
+│   └── {case}/                   # 生成したネットワーク（gitignored・再生成可能）
 └── output/                       # 分析出力（gitignored・実行時に自動生成）
 ```
 
