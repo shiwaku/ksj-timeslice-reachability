@@ -299,12 +299,25 @@ python3 src/timeslice_search.py \
 | `mesh_code` | L6 メッシュコード（11 桁） |
 | `dist_a_min` | 始点 A からの最短到達時間（分）。通過不可は NaN |
 | `dist_b_min` | 終点 B への最短到達時間（分）。通過不可は NaN |
-| `t_arrive_earliest` | 最早到着可能時刻（= dist_a_min）（分） |
-| `t_arrive_latest` | 最遅到着可能時刻（= T_max − dist_b_min）（分） |
-| `slack_min` | 余裕時間 = T_max − dist_a − dist_b（分）。通過不可は NaN |
-| `slack_rank` | slack の 10 分刻みランク（文字列）。通過不可は空文字 |
+| `t_arrive_earliest` | そのメッシュに**最も早く到着できる時刻**（= `dist_a_min`）（分） |
+| `t_arrive_latest` | そのメッシュに**最も遅く到着できる時刻**（= T_max − `dist_b_min`）（分） |
+| `slack_min` | 余裕時間 = T_max − `dist_a_min` − `dist_b_min`（分）。通過不可は NaN |
+| `slack_rank` | `slack_min` の 10 分刻みランク（文字列）。通過不可は空文字 |
 | `in_t10` 〜 `in_tXX` | 各時刻スライスで存在可能か（True/False） |
 | `geometry` | メッシュポリゴン（EPSG:4326） |
+
+**具体例**（T_max=60分・最短経路53.4分・あるメッシュの場合）
+
+```
+dist_a_min        = 28.3分  ← 始点から28.3分で到達できる
+dist_b_min        = 25.1分  ← そこから終点まで25.1分かかる
+t_arrive_earliest = 28.3分  ← 最も早くそのメッシュにいられる時刻
+t_arrive_latest   = 34.9分  ← 最も遅くそのメッシュにいられる時刻（60 − 25.1）
+slack_min         =  6.6分  ← 余裕時間（60 − 28.3 − 25.1）
+in_t30            = True    ← 出発30分後にそのメッシュにいた可能性あり
+```
+
+`t_arrive_earliest` 〜 `t_arrive_latest` の時刻帯がそのメッシュの**防犯カメラ確認時間帯**となる。`slack_min` が大きいメッシュほど滞在・立ち寄りの余裕があった場所として優先度を高く評価できる。
 
 ### `od_points_{始点名}_{終点名}.geojson`
 
