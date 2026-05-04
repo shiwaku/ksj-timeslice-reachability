@@ -304,6 +304,18 @@ python3 src/timeslice_search.py \
 | `in_t10` 〜 `in_tXX` | 各時刻スライスで存在可能か（True/False） |
 | `geometry` | メッシュポリゴン（EPSG:4326） |
 
+### `od_points_{始点名}_{終点名}.geojson`
+
+始点・終点のポイントデータ。QGIS でタイムスライスレイヤーと重ねて表示できる。
+
+| プロパティ | 内容 |
+|---|---|
+| `type` | `origin`（始点）または `destination`（終点） |
+| `name` | 地点名 |
+| `lat` / `lon` | 入力した緯度・経度 |
+| `snap_lat` / `snap_lon` | スナップした最寄道路ノードの緯度・経度 |
+| `snap_m` | 入力座標から最寄ノードまでの距離（m） |
+
 ---
 
 ## QGIS での可視化

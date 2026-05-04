@@ -23,6 +23,7 @@
 """
 
 import argparse
+import json
 import time
 from pathlib import Path
 
@@ -458,7 +459,44 @@ def main():
         print(f"→ {out_parquet.name}  ({feasible.sum():,}メッシュ, {sz}KB)")
         print(f"→ {out_qml.name}\n")
 
-    print(f"総処理時間: {time.time()-t0:.1f}s")
+    # ── OD ポイント出力 ──────────────────────────
+    od_geojson = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [args.orig_lon, args.orig_lat]},
+                "properties": {
+                    "type": "origin",
+                    "name": args.orig_name,
+                    "lat": args.orig_lat,
+                    "lon": args.orig_lon,
+                    "snap_lat": o_lat,
+                    "snap_lon": o_lon,
+                    "snap_m": round(o_snap),
+                },
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [args.dest_lon, args.dest_lat]},
+                "properties": {
+                    "type": "destination",
+                    "name": args.dest_name,
+                    "lat": args.dest_lat,
+                    "lon": args.dest_lon,
+                    "snap_lat": d_lat,
+                    "snap_lon": d_lon,
+                    "snap_m": round(d_snap),
+                },
+            },
+        ],
+    }
+    od_path = out_dir / f"od_points_{args.orig_name}_{args.dest_name}.geojson"
+    with open(od_path, "w", encoding="utf-8") as f:
+        json.dump(od_geojson, f, ensure_ascii=False, indent=2)
+    print(f"→ {od_path.name}")
+
+    print(f"\n総処理時間: {time.time()-t0:.1f}s")
 
 
 if __name__ == "__main__":
