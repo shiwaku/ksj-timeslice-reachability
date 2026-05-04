@@ -576,7 +576,7 @@ def main():
                 "geometry": {"type": "Point", "coordinates": [args.orig_lon, args.orig_lat]},
                 "properties": {
                     "type": "origin",
-                    "name": args.orig_name,
+                    "name": f"{args.orig_name}（始点）",
                     "lat": args.orig_lat,
                     "lon": args.orig_lon,
                     "snap_lat": o_lat,
@@ -589,7 +589,7 @@ def main():
                 "geometry": {"type": "Point", "coordinates": [args.dest_lon, args.dest_lat]},
                 "properties": {
                     "type": "destination",
-                    "name": args.dest_name,
+                    "name": f"{args.dest_name}（終点）",
                     "lat": args.dest_lat,
                     "lon": args.dest_lon,
                     "snap_lat": d_lat,
