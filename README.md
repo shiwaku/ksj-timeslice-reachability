@@ -213,7 +213,7 @@ python3 src/make_access_links.py \
   --pref 埼玉県
 ```
 
-### ステップ 3: 生成したデータで分析
+### ステップ 3: 時刻スライス分析を実行
 
 ```bash
 python3 src/timeslice_search.py \
