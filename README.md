@@ -215,6 +215,8 @@ python3 src/make_access_links.py \
 
 ### ステップ 3: 時刻スライス分析を実行
 
+`--links`・`--nodes`・`--access` にはステップ 2 で生成したファイルのパスを指定します。
+
 ```bash
 python3 src/timeslice_search.py \
   --links network/saitama_pref/KSJ_N13-24_saitama_pref_道路リンク.parquet \
