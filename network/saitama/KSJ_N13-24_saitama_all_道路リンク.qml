@@ -16,7 +16,7 @@
           <Option type="Map">
             <Option name="line_color" type="QString" value="0,48,135,255"/>
             <Option name="line_style"  type="QString" value="solid"/>
-            <Option name="line_width"  type="QString" value="0.3"/>
+            <Option name="line_width"  type="QString" value="0.7"/>
             <Option name="line_width_unit" type="QString" value="MM"/>
           </Option>
         </layer>
@@ -27,7 +27,7 @@
           <Option type="Map">
             <Option name="line_color" type="QString" value="230,0,38,255"/>
             <Option name="line_style"  type="QString" value="solid"/>
-            <Option name="line_width"  type="QString" value="0.3"/>
+            <Option name="line_width"  type="QString" value="0.5"/>
             <Option name="line_width_unit" type="QString" value="MM"/>
           </Option>
         </layer>
