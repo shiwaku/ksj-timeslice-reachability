@@ -36,10 +36,10 @@ from shapely.geometry import box
 
 SCRIPT_DIR     = Path(__file__).parent
 REPO_ROOT      = SCRIPT_DIR.parent
-DATA_DIR       = REPO_ROOT / "data" / "saitama"
-DEFAULT_LINKS  = str(DATA_DIR / "KSJ_N13-24_saitama_all_道路リンク.parquet")
-DEFAULT_NODES  = str(DATA_DIR / "KSJ_N13-24_saitama_all_道路ノード.parquet")
-DEFAULT_ACCESS = str(DATA_DIR / "KSJ_N13-24_saitama_all_アクセスリンク_L6.parquet")
+SAMPLE_DIR     = REPO_ROOT / "network" / "saitama"
+DEFAULT_LINKS  = str(SAMPLE_DIR / "KSJ_N13-24_saitama_all_道路リンク.parquet")
+DEFAULT_NODES  = str(SAMPLE_DIR / "KSJ_N13-24_saitama_all_道路ノード.parquet")
+DEFAULT_ACCESS = str(SAMPLE_DIR / "KSJ_N13-24_saitama_all_アクセスリンク_L6.parquet")
 DEFAULT_TMAX   = 60.0
 DEFAULT_SLICE  = 10
 DEFAULT_OUT    = str(REPO_ROOT / "output")

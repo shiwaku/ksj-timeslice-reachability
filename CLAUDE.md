@@ -30,7 +30,7 @@ output/                 分析出力（gitignored）
 - **アルゴリズム**: 前向き Dijkstra（A→全ノード）+ 後向き Dijkstra（B→全ノード・G.T）
 - **出力**: `output/arrival_map_*.parquet/.qml`、`output/timeslice_*.parquet/.qml`
 - **パス定数**: `REPO_ROOT = Path(__file__).parent.parent`（`src/` の 1 つ上がリポジトリルート）
-- **デフォルトデータ**: `data/saitama/` の埼玉県サンプル
+- **デフォルトデータ**: `network/saitama/` の埼玉県サンプル
 
 ### ksj_to_network_csv.py
 

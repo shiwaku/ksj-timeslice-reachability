@@ -15,7 +15,7 @@ python3 src/timeslice_search.py \
   --tmax {TMAX}
 ```
 
-`--links`・`--nodes`・`--access` を省略すると `data/saitama/` のサンプルデータを使用する。
+`--links`・`--nodes`・`--access` を省略すると `network/saitama/` のサンプルデータを使用する。
 
 ## 独自ネットワークデータで実行
 
